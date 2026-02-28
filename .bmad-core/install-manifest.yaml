@@ -1,0 +1,19 @@
+version: 4.44.3
+installed_at: '2026-01-06T10:30:00.000Z'
+install_type: full
+agent: null
+ides_setup: []
+expansion_packs: []
+files:
+  - path: .bmad-core/core-config.yaml
+    hash: null
+    modified: false
+  - path: .bmad-core/agents
+    hash: null
+    modified: false
+  - path: .bmad-core/tasks
+    hash: null
+    modified: false
+  - path: .bmad-core/data
+    hash: null
+    modified: false

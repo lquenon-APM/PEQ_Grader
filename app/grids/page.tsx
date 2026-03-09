@@ -1,12 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/lib/db";
-import { Plus, Grid3x3, Trash2 } from "lucide-react";
+import { Plus, Grid3x3, Trash2, Upload } from "lucide-react";
 import Link from "next/link";
+import GridCSVImporter from "@/components/grids/GridCSVImporter";
 
 export default function GridsPage() {
   const grids = useLiveQuery(() => db.grids.toArray());
+  const [showImporter, setShowImporter] = useState(false);
 
   const deleteGrid = async (gridId: string) => {
     if (confirm("Are you sure you want to delete this grid?")) {
@@ -32,13 +35,22 @@ export default function GridsPage() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold text-slate-900">Grading Grids</h1>
-          <Link
-            href="/grids/new"
-            className="flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:scale-95 transition-all h-12"
-          >
-            <Plus size={20} />
-            Create New Grid
-          </Link>
+          <div className="flex gap-3">
+            <button
+              onClick={() => setShowImporter(true)}
+              className="flex items-center gap-2 px-4 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 active:scale-95 transition-all h-12"
+            >
+              <Upload size={20} />
+              Importer CSV
+            </button>
+            <Link
+              href="/grids/new"
+              className="flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:scale-95 transition-all h-12"
+            >
+              <Plus size={20} />
+              Create New Grid
+            </Link>
+          </div>
         </div>
 
         {grids.length === 0 ? (
@@ -50,13 +62,22 @@ export default function GridsPage() {
             <p className="text-slate-500 mb-6">
               Create your first grading grid to get started
             </p>
-            <Link
-              href="/grids/new"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:scale-95 transition-all"
-            >
-              <Plus size={20} />
-              Create Grid
-            </Link>
+            <div className="flex flex-col items-center gap-3">
+              <Link
+                href="/grids/new"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:scale-95 transition-all"
+              >
+                <Plus size={20} />
+                Create Grid
+              </Link>
+              <button
+                onClick={() => setShowImporter(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg hover:bg-emerald-100 active:scale-95 transition-all"
+              >
+                <Upload size={20} />
+                ou Importer depuis CSV
+              </button>
+            </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -116,6 +137,9 @@ export default function GridsPage() {
               </div>
             ))}
           </div>
+        )}
+        {showImporter && (
+          <GridCSVImporter onClose={() => setShowImporter(false)} />
         )}
       </div>
     </div>

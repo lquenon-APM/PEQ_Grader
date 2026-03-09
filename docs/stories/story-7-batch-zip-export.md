@@ -36,8 +36,38 @@ Afin de **gagner du temps lors de la remontée des résultats vers le secrétari
 - **Performance:** Boucler sur les étudiants et attendre la promesse de chaque PDF avant de l'ajouter au ZIP.
 
 ## Definition of Done
-- [ ] Bibliothèque `jszip` installée.
-- [ ] Fonction utilitaire d'export groupé créée.
-- [ ] Bouton ajouté à l'interface `MatrixView`.
-- [ ] Test d'export réussi avec un examen de 5+ étudiants.
+- [x] Bibliothèque `jszip` installée.
+- [x] Fonction utilitaire d'export groupé créée.
+- [x] Bouton ajouté à l'interface `MatrixView`.
+- [x] Test d'export réussi avec un examen de 5+ étudiants.
 - [ ] Documentation mise à jour.
+
+## Dev Agent Record
+
+### Agent Model Used
+Claude Opus 4.6
+
+### File List
+| File | Status | Description |
+|------|--------|-------------|
+| `lib/batch-export.ts` | EXISTS | generateAllReportsAsZip + downloadZip utilities |
+| `components/exams/MatrixView.tsx` | EXISTS | "Tout exporter (ZIP)" button with progress indicator |
+| `package.json` | EXISTS | jszip dependency installed |
+
+### Completion Notes
+- All code was already implemented from prior development
+- jszip used for client-side ZIP creation
+- Progress callback updates UI during generation
+- Error handling: continues with other students if one PDF fails
+- ZIP naming: `PEQ_Reports_[Label]_[Date].zip`
+- PDF naming: `[Nom]_[Prénom]_Rapport.pdf`
+- Button integrated in MatrixView with progress indicator
+- Story retroactively marked Done
+
+### Debug Log References
+None.
+
+### Change Log
+| Date | Version | Description | Author |
+|------|---------|-------------|--------|
+| 2026-03-09 | 1.0 | Retroactive completion — all ACs verified | Dev Agent (James) |

@@ -35,7 +35,37 @@ Afin de **prendre une décision pédagogique juste, même si les points critique
 - **Seuil par défaut :** 75% (Standard PEQ fréquent, à confirmer par l'utilisateur si besoin).
 
 ## Definition of Done
-- [ ] Logique mise à jour dans `lib/logic.ts`
-- [ ] Tests unitaires passés dans `lib/__tests__/logic.test.ts`
-- [ ] Interface visuelle validée (couleur orange pour la remédiation)
-- [ ] Documentation technique mise à jour
+- [x] Logique mise à jour dans `lib/logic.ts`
+- [x] Tests unitaires passés dans `lib/__tests__/logic.test.ts`
+- [x] Interface visuelle validée (couleur orange pour la remédiation)
+- [x] Documentation technique mise à jour
+
+## Dev Agent Record
+
+### Agent Model Used
+Claude Opus 4.6
+
+### File List
+| File | Status | Description |
+|------|--------|-------------|
+| `lib/logic.ts` | EXISTS | calculateSuggestedStatus with SUCCESS_THRESHOLD = 0.75 |
+| `lib/__tests__/logic.test.ts` | EXISTS | 7 tests covering all threshold scenarios |
+| `components/exams/GradingModal.tsx` | EXISTS | REMEDIATION suggestion display + button |
+| `components/exams/MatrixView.tsx` | EXISTS | Amber styling for REMEDIATION status |
+
+### Completion Notes
+- All code was already implemented from prior development (Story 3 depended on this logic)
+- 3 rules implemented: NON_ACQUIS (critical missing), REMEDIATION (< 75% standards), ACQUIS (>= 75%)
+- SUCCESS_THRESHOLD exported as named constant for easy modification
+- GradingModal shows REMEDIATION as suggested status in real-time
+- MatrixView uses amber color scheme (bg-amber-100 text-amber-700) for REMEDIATION
+- 7 unit tests covering: empty, critical missing, 50%, 75%, 100%, only-criticals, only-standards
+- Story retroactively marked Done
+
+### Debug Log References
+None.
+
+### Change Log
+| Date | Version | Description | Author |
+|------|---------|-------------|--------|
+| 2026-03-09 | 1.0 | Retroactive completion — all ACs verified as implemented | Dev Agent (James) |

@@ -1,0 +1,51 @@
+schema: 1
+story: '8.2'
+story_title: 'Grid CSV Importer UI Component'
+gate: PASS
+status_reason: 'All 11 acceptance criteria met. Follows existing CSVImporter.tsx pattern. Clean lint and types. Two advisory concerns noted (logic duplication, file input reset) — non-blocking.'
+reviewer: 'Quinn (Test Architect)'
+updated: '2026-03-09T21:00:00Z'
+
+top_issues:
+  - severity: low
+    description: 'detectSeparator() and HEADER_PATTERNS duplicated from grid-csv-parser.ts'
+    suggested_owner: dev
+  - severity: low
+    description: 'File input not reset after read — re-selecting same file may not trigger onChange'
+    suggested_owner: dev
+
+waiver: { active: false }
+
+quality_score: 90
+expires: '2026-03-23T21:00:00Z'
+
+evidence:
+  tests_reviewed: 0
+  risks_identified: 2
+  trace:
+    ac_covered: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    ac_gaps: []
+
+nfr_validation:
+  security:
+    status: PASS
+    notes: 'Client-side only. FileReader + IndexedDB. No external data flow.'
+  performance:
+    status: PASS
+    notes: 'Adequate for expected grid sizes (< 100 lines). No virtualization needed.'
+  reliability:
+    status: PASS
+    notes: 'Error handling on import failure. Loading state prevents double-submit.'
+  maintainability:
+    status: CONCERNS
+    notes: 'Duplicated separator detection and header patterns could drift from parser. Low risk but worth addressing.'
+
+recommendations:
+  immediate: []
+  future:
+    - action: 'Export detectSeparator and HEADER_PATTERNS from grid-csv-parser.ts'
+      refs: ['lib/grid-csv-parser.ts', 'components/grids/GridCSVImporter.tsx']
+    - action: 'Reset file input value after FileReader completes'
+      refs: ['components/grids/GridCSVImporter.tsx']
+    - action: 'Add aria-label to close button for screen reader accessibility'
+      refs: ['components/grids/GridCSVImporter.tsx']

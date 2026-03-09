@@ -1,7 +1,7 @@
 ---
 id: STORY-1
 title: Core Setup & Grid Management
-status: Ready for Review
+status: Done
 priority: High
 epic: EPIC-1
 ---
@@ -128,3 +128,66 @@ The first feature is the "Grid Manager" which allows creating the Templates (Com
   - Component tests: 11 tests covering GridEditor functionality
   - Total: 24 tests, all passing ✓
   - Test coverage for critical business logic
+
+## QA Results
+
+### Review Date: 2026-03-09
+
+### Reviewed By: Quinn (Test Architect)
+
+### Code Quality Assessment
+
+**Overall: GOOD** — Solid foundational story. Database schema matches architecture spec, App Shell is responsive with proper Dark Slate theme, GridEditor supports full CRUD with validation. Code follows standard Next.js/React patterns and Tailwind conventions.
+
+**Strengths:**
+- Clean separation: `lib/db.ts` (data), `stores/useGlobalStore.ts` (state), `components/` (UI)
+- GridEditor has proper validation before save (title, competency labels, indicator text)
+- Touch targets correctly sized (py-3, p-3, h-12) for tablet use
+- `generateId()` fallback for environments without `crypto.randomUUID` is a nice defensive pattern
+
+**Observations:**
+- `layout.tsx` imports `Metadata` type but it's unused (it's a client component, metadata export won't work)
+- `app/grids/page.tsx` uses English labels ("Grading Grids", "Create New Grid") while GridEditor uses French — inconsistent i18n
+- Delete confirmation uses browser `confirm()` / `alert()` — functional but not polished
+
+### Refactoring Performed
+
+None — Story 1 is foundational and widely depended upon. No refactoring during review to avoid regression risk.
+
+### Compliance Check
+
+- Coding Standards: ✓ Follows Tailwind + Next.js conventions consistently
+- Project Structure: ✓ Files in correct locations (`lib/`, `stores/`, `components/grids/`, `app/grids/`)
+- Testing Strategy: ✓ 24 tests covering DB, state, and component layers (note: tests use Jest, not Vitest — pre-existing config)
+- All ACs Met: ✓
+  - AC1: Project builds ✓
+  - AC2: Database created in IndexedDB ✓
+  - AC3: Can create Grid with competencies + indicators ✓
+  - AC4: Grid persists after reload (Dexie/IndexedDB) ✓
+  - AC5: Dark Slate theme applied ✓
+
+### Improvements Checklist
+
+- [ ] Remove unused `Metadata` import from `layout.tsx` (minor)
+- [ ] Harmonize language — choose French or English for UI labels consistently
+- [ ] Consider replacing `confirm()`/`alert()` with modal dialogs in future stories
+
+### Security Review
+
+No concerns. Local-first architecture with no API calls. No user input reaches server-side code.
+
+### Performance Considerations
+
+No concerns. Dexie queries are simple key lookups. No large datasets expected at this stage.
+
+### Files Modified During Review
+
+None.
+
+### Gate Status
+
+Gate: PASS → docs/qa/gates/1-core-setup.yml
+
+### Recommended Status
+
+✓ Ready for Done — All acceptance criteria met, 24 tests passing, solid foundation.

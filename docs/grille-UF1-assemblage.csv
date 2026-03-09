@@ -1,0 +1,22 @@
+Préparer le poste de travail;Identifier les composants nécessaires selon le cahier des charges;oui
+Préparer le poste de travail;Vérifier la compatibilité des composants entre eux;oui
+Préparer le poste de travail;Organiser l'espace de travail de manière ergonomique;non
+Préparer le poste de travail;Appliquer les mesures de protection antistatique (ESD);non
+Assembler les composants matériels;Installer le processeur et son système de refroidissement;oui
+Assembler les composants matériels;Installer la mémoire vive (RAM);oui
+Assembler les composants matériels;Installer la carte mère dans le boîtier;non
+Assembler les composants matériels;Connecter les unités de stockage (SSD/HDD);non
+Assembler les composants matériels;Connecter l'alimentation aux composants;oui
+Assembler les composants matériels;Gérer le câblage de manière ordonnée;non
+Installer le système d'exploitation;Configurer le BIOS/UEFI correctement;oui
+Installer le système d'exploitation;Créer les partitions selon les spécifications;non
+Installer le système d'exploitation;Installer le système d'exploitation sans erreur;oui
+Installer le système d'exploitation;Appliquer les mises à jour critiques;non
+Configurer les périphériques;Installer les pilotes nécessaires;oui
+Configurer les périphériques;Configurer la connexion réseau (filaire/Wi-Fi);non
+Configurer les périphériques;Configurer l'imprimante et les périphériques externes;non
+Configurer les périphériques;Vérifier le bon fonctionnement de chaque périphérique;oui
+Vérifier le fonctionnement global;Effectuer un test de démarrage complet;oui
+Vérifier le fonctionnement global;Vérifier les performances du système (CPU, RAM, stockage);non
+Vérifier le fonctionnement global;Contrôler les températures de fonctionnement;non
+Vérifier le fonctionnement global;Valider la conformité au cahier des charges;oui

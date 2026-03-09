@@ -1,0 +1,20 @@
+Diagnostiquer une panne matérielle;Recueillir les symptômes décrits par l'utilisateur;oui
+Diagnostiquer une panne matérielle;Utiliser les outils de diagnostic matériel;non
+Diagnostiquer une panne matérielle;Identifier le composant défaillant;oui
+Diagnostiquer une panne matérielle;Interpréter les codes d'erreur (bips, LED, journaux);non
+Diagnostiquer une panne logicielle;Analyser les messages d'erreur du système;oui
+Diagnostiquer une panne logicielle;Vérifier l'intégrité du système de fichiers;non
+Diagnostiquer une panne logicielle;Identifier les conflits logiciels ou pilotes;oui
+Diagnostiquer une panne logicielle;Utiliser les outils de diagnostic intégrés (Event Viewer, logs);non
+Réparer ou remplacer un composant défectueux;Remplacer le composant défaillant en respectant les procédures;oui
+Réparer ou remplacer un composant défectueux;Vérifier la compatibilité du composant de remplacement;oui
+Réparer ou remplacer un composant défectueux;Tester le fonctionnement après remplacement;oui
+Réparer ou remplacer un composant défectueux;Respecter les consignes de sécurité lors de l'intervention;non
+Réinstaller/restaurer un système;Sauvegarder les données utilisateur avant intervention;oui
+Réinstaller/restaurer un système;Réinstaller le système d'exploitation si nécessaire;non
+Réinstaller/restaurer un système;Restaurer les données utilisateur après intervention;oui
+Réinstaller/restaurer un système;Vérifier le fonctionnement complet après restauration;non
+Documenter l'intervention;Rédiger un rapport d'intervention clair et structuré;oui
+Documenter l'intervention;Décrire les causes identifiées et les solutions appliquées;non
+Documenter l'intervention;Formuler des recommandations pour éviter la récurrence;non
+Documenter l'intervention;Communiquer le résultat au client de manière compréhensible;oui
